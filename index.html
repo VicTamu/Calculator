@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Calstyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="math-symbols">
+    <div class="symbol-row row1">∫ ∑ π ∞ √ ± × ÷ = ≠ ≈ ≤ ≥</div>
+    <div class="symbol-row row2">∏ ∂ ∆ ∇ ∝ ∩ ∪ ∈ ∉ ∀ ∃</div>
+    <div class="symbol-row row3">θ α β γ δ ε ζ η θ ι κ</div>
+    <div class="symbol-row row4">λ μ ν ξ ο π ρ σ τ υ φ</div>
+    <div class="symbol-row row5">χ ψ ω Ω Θ Λ Ξ Π Σ Φ Ψ</div>
+  </div>
+
+  <div class="menu-container">
+    <div class="menu-icon" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="dropdown-menu" id="dropdownMenu">
+      <div class="menu-item" onclick="window.location.href='index.html'">Simple Calculator</div>
+      <div class="menu-item" onclick="window.location.href='scientific.html'">Scientific Calculator</div>
+    </div>
+  </div>
+
+  <div class="calculator">
+    <div id="display"></div>
+    <div class="buttons">
+      <button class="memory" onclick="memoryStore()">MS</button>
+      <button class="memory" onclick="memoryRecall()">MR</button>
+      <button class="memory" onclick="memoryClear()">MC</button>
+      <button class="clear" onclick="clearDisplay()">C</button>
+
+      <button class="btn-7" onclick="append('7')">7</button>
+      <button class="btn-8" onclick="append('8')">8</button>
+      <button class="btn-9" onclick="append('9')">9</button>
+      <button class="operator" onclick="append('/')">/</button>
+
+      <button class="btn-4" onclick="append('4')">4</button>
+      <button class="btn-5" onclick="append('5')">5</button>
+      <button class="btn-6" onclick="append('6')">6</button>
+      <button class="operator" onclick="append('*')">×</button>
+
+      <button class="btn-1" onclick="append('1')">1</button>
+      <button class="btn-2" onclick="append('2')">2</button>
+      <button class="btn-3" onclick="append('3')">3</button>
+      <button class="operator" onclick="append('-')">-</button>
+
+      <button class="btn-0" onclick="append('0')">0</button>
+      <button class="decimal" onclick="append('.')">.</button>
+      <button class="equal" onclick="calculate()">=</button>
+      <button class="operator" onclick="append('+')">+</button>
+    </div>
+  </div>
+
+  <div class="calculator" id="scientificCalculator" style="display: none;">
+    <!-- Scientific calculator will be added here later -->
+  </div>
+
+  <script src="script.js"></script>
+  <footer class="website-footer">
+    <p>&copy; 2025 Victor Ekeke | All Rights Reserved</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="Calstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="math-symbols">
+        <div class="symbol-row row1">∫ ∑ ∏ √ ∞ ≠ ≈ ≤ ≥ ± × ÷ + - × ÷ = ≠ < > ≤ ≥ ∫ ∑ ∏ √ ∞ ≠ ≈ ≤ ≥ ± × ÷ = ≠ < > ≤ ≥</div>
+        <div class="symbol-row row2">α β γ δ ε ζ η θ ι κ λ μ ν π ρ σ τ υ φ χ ψ ω α β γ δ ε ζ η θ ι κ λ μ ν π ρ σ τ υ φ χ ψ ω</div>
+        <div class="symbol-row row3">π ρ σ τ υ φ χ ψ ω ∂ ∆ ∇ ∀ ∃ ∄ ∈ ∉ ∋ ∌ ∍ ∅ π ρ σ τ υ φ χ ψ ω ∂ ∆ ∇ ∀ ∃ ∄ ∈ ∉ ∋ ∌ ∍ ∅</div>
+        <div class="symbol-row row4">∀ ∃ ∄ ∈ ∉ ∋ ∌ ∍ ∅ ∆ ∇ ⊕ ⊗ ⊖ ⊘ ⊙ ⊚ ⊛ ⊜ ⊝ ⊞ ⊟ ∀ ∃ ∄ ∈ ∉ ∋ ∌ ∍ ∅ ∆ ∇ ⊕ ⊗ ⊖ ⊘ ⊙ ⊚ ⊛ ⊜ ⊝ ⊞ ⊟</div>
+        <div class="symbol-row row5">⊕ ⊗ ⊖ ⊘ ⊙ ⊚ ⊛ ⊜ ⊝ ⊞ ⊟ ∫ ∑ ∏ √ ∞ ≠ ≈ ≤ ≥ ± ⊕ ⊗ ⊖ ⊘ ⊙ ⊚ ⊛ ⊜ ⊝ ⊞ ⊟ ∫ ∑ ∏ √ ∞ ≠ ≈ ≤ ≥ ±</div>
+        <div class="symbol-row row6">+ - × ÷ = ≠ < > ≤ ≥ ∫ ∑ ∏ √ ∞ ≠ ≈ ≤ ≥ ± × ÷ + - × ÷ = ≠ < > ≤ ≥ ∫ ∑ ∏ √ ∞ ≠ ≈ ≤ ≥ ± × ÷</div>
+        <div class="symbol-row row7">π ρ σ τ υ φ χ ψ ω ∂ ∆ ∇ ∀ ∃ ∄ ∈ ∉ ∋ ∌ ∍ ∅ ∆ ∇ π ρ σ τ υ φ χ ψ ω ∂ ∆ ∇ ∀ ∃ ∄ ∈ ∉ ∋ ∌ ∍ ∅ ∆ ∇</div>
+    </div>
+    <div class="menu-container">
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <div class="menu-item" onclick="window.location.href='index.html'">Simple Calculator</div>
+            <div class="menu-item" onclick="window.location.href='scientific.html'">Scientific Calculator</div>
+        </div>
+    </div>
+
+    <div class="calculator scientific-calculator">
+        <div id="display">0</div>
+        <!-- Inline input fields for dynamic calculations -->
+        <div id="inline-inputs" style="display:none; margin-bottom: 16px;"></div>
+        <div class="buttons">
+            <!-- Mode Selection -->
+            <div class="mode-selection">
+                <button class="mode-btn" onclick="switchMode('math')">Math</button>
+                <button class="mode-btn" onclick="switchMode('chemistry')">Chemistry</button>
+                <button class="mode-btn" onclick="switchMode('physics')">Physics</button>
+            </div>
+            <div class="subtab-space">
+                <div class="chemistry-subtabs">
+                    <button class="chemistry-subtab" onclick="calculate('molarity')">Molarity</button>
+                    <button class="chemistry-subtab" onclick="calculate('molality')">Molality</button>
+                    <button class="chemistry-subtab" onclick="calculate('dilution')">Dilution</button>
+                    <button class="chemistry-subtab" onclick="calculate('ph')">pH</button>
+                </div>
+                <div class="physics-subtabs">
+                    <button class="physics-subtab" onclick="calculate('velocity')">Velocity</button>
+                    <button class="physics-subtab" onclick="calculate('acceleration')">Acceleration</button>
+                    <button class="physics-subtab" onclick="calculate('force')">Force</button>
+                    <button class="physics-subtab" onclick="calculate('energy')">Energy</button>
+                </div>
+                <div class="math-subtabs">
+                    <button class="math-subtab" onclick="calculate('log')">Log</button>
+                    <button class="math-subtab" onclick="calculate('ln')">Ln</button>
+                    <button class="math-subtab" onclick="calculate('log2')">Log₂</button>
+                    <button class="math-subtab" onclick="calculate('logb')">Logₓ</button>
+                </div>
+            </div>
+
+            <!-- First Row - Trigonometric Functions -->
+            <button class="scientific" onclick="calculate('sin')">sin</button>
+            <button class="scientific" onclick="calculate('cos')">cos</button>
+            <button class="scientific" onclick="calculate('tan')">tan</button>
+            <button class="scientific" onclick="calculate('arcsin')">arcsin</button>
+            <button class="scientific" onclick="calculate('arccos')">arccos</button>
+
+            <!-- Second Row - Hyperbolic Functions -->
+            <button class="scientific" onclick="calculate('sinh')">sinh</button>
+            <button class="scientific" onclick="calculate('cosh')">cosh</button>
+            <button class="scientific" onclick="calculate('tanh')">tanh</button>
+            <button class="scientific" onclick="calculate('arsinh')">arsinh</button>
+            <button class="scientific" onclick="calculate('arcosh')">arcosh</button>
+
+            <!-- Third Row - Power Functions -->
+            <button class="scientific" onclick="calculate('exp')">eˣ</button>
+            <button class="scientific" onclick="calculate('square')">x²</button>
+            <button class="scientific" onclick="calculate('cube')">x³</button>
+            <button class="scientific" onclick="calculate('sqrt')">√</button>
+
+            <!-- Fourth Row - Numbers -->
+            <button class="operator" onclick="append('+')">+</button>
+            <button class="scientific" onclick="calculate('e')">e</button>
+            <button class="btn-9" onclick="append('9')">9</button>
+            <button class="btn-8" onclick="append('8')">8</button>
+            <button class="btn-7" onclick="append('7')">7</button>
+
+            <!-- Fifth Row - Numbers -->
+            <button class="operator" onclick="append('/')">/</button>
+            <button class="scientific" onclick="calculate('factorial')">x!</button>
+            <button class="btn-4" onclick="append('4')">4</button>
+            <button class="btn-5" onclick="append('5')">5</button>
+            <button class="btn-6" onclick="append('6')">6</button>
+
+            <!-- Sixth Row - Numbers -->
+            <button class="operator" onclick="append('*')">×</button>
+            <button class="scientific" onclick="calculate('pi')">π</button>
+            <button class="btn-3" onclick="append('3')">3</button>
+            <button class="btn-2" onclick="append('2')">2</button>
+            <button class="btn-1" onclick="append('1')">1</button>
+
+            <!-- Seventh Row - Numbers and Controls -->
+            <button class="operator" onclick="append('-')">-</button>
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="memory" onclick="deleteLast()">⌫</button>
+            <button class="decimal" onclick="append('.')">.</button>
+            <button class="btn-0" onclick="append('0')">0</button>
+
+            <!-- Eighth Row - Controls -->
+            <button class="equal" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script src="scientific.js"></script>
+    <footer class="website-footer">
+        <p>&copy; 2025 Victor Ekeke | All Rights Reserved</p>
+    </footer>
+</body>
+</html> 
